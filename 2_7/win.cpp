@@ -9,7 +9,7 @@ Win::Win(QWidget *parent)
      setWindowTitle(codec->toUnicode("Возведение в квадрат"));
 
      frame = new QFrame(this);                  // создаем объект рамка
-     frame->setFrameShadow(QFrame::Raised);     // декор внешнего вида рамки
+     frame->setFrameShadow(QFrame::Raised);
      frame->setFrameShape(QFrame::Panel);
 
      inputLabel = new QLabel(codec->toUnicode("Введите число:"),this);  // создаем лейбл для строки ввода
@@ -26,16 +26,15 @@ Win::Win(QWidget *parent)
 
      // компоновка приложения выполняется согласно рисунку 2.
      QVBoxLayout *vLayout1 = new QVBoxLayout(frame);    // создаем в рамке вертикальную разметку и помещаем в нее
-     vLayout1->addWidget(inputLabel);                   // лейбл строки ввода
-     vLayout1->addWidget(inputEdit);                    // и саму строку ввода
-     vLayout1->addWidget(outputLabel);                  // лейбл строки вывода
-     vLayout1->addWidget(outputEdit);                   // и саму строку вывода
-     vLayout1->addStretch();                            // добавление пружины, чтобы виджеты оставались на своих местах при масштабировании
-
+     vLayout1->addWidget(inputLabel);
+     vLayout1->addWidget(inputEdit);
+     vLayout1->addWidget(outputLabel);
+     vLayout1->addWidget(outputEdit);
+     vLayout1->addStretch();
      QVBoxLayout *vLayout2 = new QVBoxLayout(frame);    // создаем в рамке еще одну вертикальную разметку и помещаем туда
-     vLayout2->addWidget(nextButton);                   // кнопку ресета
-     vLayout2->addWidget(exitButton);                   // и выхода
-     vLayout2->addStretch();                            // добавляем пружину
+     vLayout2->addWidget(nextButton);
+     vLayout2->addWidget(exitButton);
+     vLayout2->addStretch();
 
      QHBoxLayout *hLayout = new QHBoxLayout(this);      // создаем горизонтальную разметку в виджете
      hLayout->addWidget(frame);                         // и добавляем туда рамку с строками и рамку с кнопками
@@ -43,9 +42,9 @@ Win::Win(QWidget *parent)
 
      begin();                                           // вызов слота begin для подготовки виджета к вводу
      // подключение сигналов к слотам
-     connect(exitButton,SIGNAL(clicked(bool)),this,SLOT(close()));
-     connect(nextButton,SIGNAL(clicked(bool)),this,SLOT(begin()));
-     connect(inputEdit,SIGNAL(returnPressed()),this,SLOT(calc()));  // нажатие клавиши enter вызывает функцию вычисления
+     connect(exitButton, &QPushButton::clicked, this, &Win::close);
+     connect(nextButton, &QPushButton::clicked, this, &Win::begin);
+     connect(inputEdit, &QLineEdit::returnPressed,this, &Win::calc);  // нажатие клавиши enter вызывает функцию вычисления
 }
 
 void Win::begin()// метод начальной настройки интерфейса / ресета

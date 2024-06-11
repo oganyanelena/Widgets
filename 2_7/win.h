@@ -2,12 +2,12 @@
 #define WIN_H
 //подключение необходимых библиотек
 #include <QtGui>
-#include <QWidget>    //Является базовым классом всех объектов пользовательского интерфейса.
-#include <QFrame>     //Базовый класс виджетов, которые могут иметь рамку.
-#include <QLabel>     //Обеспечивает отображение текста или изображения.
-#include <QLineEdit>  //Виджет представляет собой однострочный текстовый редактор.
-#include <QPushButton>//Виджет кнопка
-#include <QValidator> //Класс обеспечивает проверку вводимого текста.
+#include <QWidget>
+#include <QFrame>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QValidator>
 
 
 class Win : public QWidget      // класс окна
@@ -28,8 +28,8 @@ public:
     Win(QWidget *parent = nullptr);
 
 public slots:
-     void begin();                  // метод начальной настройки интерфейса
-     void calc();                   // метод реализации вычислений
+     void begin();
+     void calc();
 
 };
 
